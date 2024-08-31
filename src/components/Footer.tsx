@@ -4,8 +4,8 @@ export default function Footer() {
       <small>
         <p>
           &copy; Copyright by{' '}
-          <a target='_blank' href='https://bytegrad.com'>
-            ByteGrad.com
+          <a target='_blank' href='https://kristjanlaane.com'>
+            Kristjan Laane
           </a>{' '}
           Intended for learning or your portfolio.
         </p>
