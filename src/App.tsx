@@ -4,13 +4,13 @@ import HashtagList from './components/HashtagList';
 
 function App() {
   return (
-    <>
+    <div className='app'>
       <Footer />
 
       <Container />
 
       <HashtagList />
-    </>
+    </div>
   );
 }
 
