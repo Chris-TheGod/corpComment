@@ -5,28 +5,28 @@ import ErrorMessage from './ErrorMessage';
 
 export default function FeedbackList() {
   const [feedbackItems, setFeedbackItems] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    setLoading(true);
-    fetch(
-      'https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks'
-    )
-      .then((response) => {
-        if (!response.ok) {
+    const fetchFeedbackItems = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          'https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks'
+        );
+        if (!res.ok) {
           throw new Error();
         }
-        return response.json();
-      })
-      .then((data) => {
+        const data = await res.json();
         setFeedbackItems(data.feedbacks);
-        setLoading(false);
-      })
-      .catch(() => {
+      } catch (error) {
         setErrorMessage('Something went wrong');
-        setLoading(false);
-      });
+      }
+      setIsLoading(false);
+    };
+
+    fetchFeedbackItems();
   }, []);
 
   return (
