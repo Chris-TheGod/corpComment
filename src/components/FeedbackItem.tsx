@@ -6,12 +6,17 @@ export default function FeedbackItem({ feedbackItem }: FeedbackItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [upvoteCount, setUpvoteCount] = useState(feedbackItem.upvoteCount);
 
+  const handleUpvote = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setUpvoteCount((prev) => ++prev);
+    e.stopPropagation();
+  };
+
   return (
     <li
       onClick={() => setIsOpen((prev) => !prev)}
       className={`feedback ${isOpen ? 'feedback--expand' : ''}`}
     >
-      <button onClick={() => setUpvoteCount((prev) => ++prev)}>
+      <button onClick={handleUpvote}>
         <TriangleUpIcon />
         <span>{upvoteCount}</span>
       </button>
