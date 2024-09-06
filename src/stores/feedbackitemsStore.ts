@@ -18,7 +18,7 @@ export const useFeedbackItemsStore = create((set, get) => ({
 
     return state.selectedCompany
       ? state.feedbackItems.filter(
-          (feedbackItem) => feedbackItem.company === selectedCompany
+          (feedbackItem) => feedbackItem.company === state.selectedCompany
         )
       : state.feedbackItems;
   },

@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     fetchFeedbackItems();
-  }, []);
+  }, [fetchFeedbackItems]);
 
   return (
     <div className='app'>
